@@ -1,0 +1,11 @@
+{
+  "buildCommand": null,
+  "outputDirectory": "."
+}
+```
+
+**Your repo structure should be:**
+```
+your-repo/
+  ├── index.html
+  └── vercel.json

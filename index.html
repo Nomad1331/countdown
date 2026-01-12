@@ -142,6 +142,7 @@
             padding: 40px 20px;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
         }
 
         .countdown-title {
@@ -213,6 +214,149 @@
             opacity: 0.7;
         }
 
+        /* Registration Form Styles */
+        .register-container {
+            background: rgba(20, 30, 48, 0.6);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+        }
+
+        .register-title {
+            text-align: center;
+            color: #00ffff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .register-subtitle {
+            text-align: center;
+            color: #8b9dc3;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            color: #8b9dc3;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(20, 30, 48, 0.8);
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .form-input::placeholder {
+            color: #4a5568;
+        }
+
+        .form-input.error {
+            border-color: #ef4444;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 5px;
+        }
+
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #8b9dc3;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 1.2rem;
+        }
+
+        .password-toggle-btn:hover {
+            color: #00ffff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #00ffff 0%, #a855f7 100%);
+            border: none;
+            border-radius: 10px;
+            color: #0a0e1a;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.2);
+            border: 2px solid #22c55e;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            color: #22c55e;
+            margin-top: 20px;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .success-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 30px 15px;
@@ -231,7 +375,7 @@
                 font-size: 2rem;
             }
 
-            .status-card {
+            .status-card, .register-container {
                 padding: 30px 20px;
             }
 
@@ -257,7 +401,8 @@
             <h2 class="message">System Upgrade in Progress</h2>
             <p class="submessage">
                 We're leveling up! The hunters are sharpening their skills and upgrading the system. 
-                Stay tuned for enhanced features and improved performance.
+                Stay tuned for enhanced features and improved performance. 
+                <strong style="color: #00ffff;">We'll be back on January 15th at 12:00 PM IST!</strong>
             </p>
         </div>
 
@@ -290,10 +435,82 @@
             <p class="status-text">"The System monitors your progress..."</p>
         </div>
 
+        <!-- Pre-Registration Form -->
+        <div class="register-container" id="registerForm">
+            <h2 class="register-title">⚔️ Awaken Early</h2>
+            <p class="register-subtitle">Register now and be ready when the gates open on January 15th</p>
+            
+            <form id="hunterForm">
+                <div class="form-group">
+                    <label class="form-label" for="hunterName">Hunter Name</label>
+                    <input 
+                        type="text" 
+                        id="hunterName" 
+                        class="form-input" 
+                        placeholder="Shadow Monarch"
+                        required
+                        minlength="2"
+                        maxlength="30"
+                    >
+                    <div class="error-message" id="nameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="form-input" 
+                        placeholder="hunter@example.com"
+                        required
+                    >
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="password-toggle">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            required
+                            minlength="6"
+                        >
+                        <button type="button" class="password-toggle-btn" id="togglePassword">
+                            👁️
+                        </button>
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Begin Awakening
+                </button>
+            </form>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message hidden" id="successMessage">
+            <div class="success-icon">🎯</div>
+            <div class="success-title">Awakening Complete!</div>
+            <p>Check your email to confirm your account. You'll be ready to hunt when the system goes live on January 15th!</p>
+        </div>
+
         <p class="quote">Keep your streak alive. We'll be back stronger.</p>
     </div>
 
-    <script>
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+        
+        // Initialize Supabase
+        const supabase = createClient(
+            'https://gdkpmyznxfthobxpyryx.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdka3BteXpueGZ0aG9ieHB5cnl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUzNTQ3MDksImV4cCI6MjA4MDkzMDcwOX0.PXuYBjeyoVDWi_D2tP_I7HuLJ85-XzDNu0e0jDfjQUM'
+        );
+
+        // Countdown Timer
         const targetDate = new Date('2026-01-15T12:00:00+05:30').getTime();
         const startDate = new Date().getTime();
         const totalDuration = targetDate - startDate;
@@ -330,6 +547,83 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        // Password Toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+
+        // Form Submission
+        document.getElementById('hunterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+            document.getElementById('hunterName').classList.remove('error');
+            document.getElementById('email').classList.remove('error');
+            document.getElementById('password').classList.remove('error');
+            
+            const hunterName = document.getElementById('hunterName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Validation
+            if (hunterName.length < 2) {
+                document.getElementById('nameError').textContent = 'Hunter name must be at least 2 characters';
+                document.getElementById('hunterName').classList.add('error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
+                document.getElementById('password').classList.add('error');
+                return;
+            }
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Awakening...';
+            
+            try {
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        emailRedirectTo: window.location.origin,
+                        data: {
+                            hunter_name: hunterName,
+                        }
+                    }
+                });
+                
+                if (error) {
+                    if (error.message.includes('already registered')) {
+                        document.getElementById('emailError').textContent = 'This email is already registered';
+                        document.getElementById('email').classList.add('error');
+                    } else {
+                        document.getElementById('emailError').textContent = error.message;
+                        document.getElementById('email').classList.add('error');
+                    }
+                    throw error;
+                }
+                
+                // Success!
+                document.getElementById('registerForm').classList.add('hidden');
+                document.getElementById('successMessage').classList.remove('hidden');
+                
+            } catch (error) {
+                console.error('Registration error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Begin Awakening';
+            }
+        });
     </script>
 </body>
 </html>
